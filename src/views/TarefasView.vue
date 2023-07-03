@@ -18,7 +18,7 @@
         v-for="tarefa, index in tarefas" 
         :key="index"
         >
-          <TarefaComponent :tarefa="tarefa" @toggle-concluida="handleToggleConcluida"/>
+          <TarefaComponent :tarefa="tarefa"/>
           <!-- Passando a propriedade tarefa para o component TarefaComponent 
           pode passar um valor para essa propriedade usando a sintaxe de vinculação :   -->
         </div>
