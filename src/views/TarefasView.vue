@@ -1,0 +1,60 @@
+<template>
+  <div>
+    <v-col
+          cols="12"
+  
+        >
+          <v-text-field
+            v-model="campoInput"
+            label="Qual sua tarefa?"
+            outlined
+            clearable
+            @keyup.enter="handleAddTarefa"
+          ></v-text-field>
+        </v-col>
+    <v-list flat subheader>
+      <v-list-item-group  multiple active-class="">
+        <div 
+        v-for="tarefa, index in tarefas" 
+        :key="index"
+        >
+          <TarefaComponent :tarefa="tarefa" @toggle-concluida="handleToggleConcluida"/>
+          <!-- Passando a propriedade tarefa para o component TarefaComponent 
+          pode passar um valor para essa propriedade usando a sintaxe de vinculação :   -->
+        </div>
+      </v-list-item-group>
+    </v-list>
+  </div>
+</template>
+
+<script>
+import TarefaComponent from "@/components/tarefas/TarefaComponent.vue";
+
+export default {
+  name: "TarefasView",
+
+  components: {
+    TarefaComponent,
+  },
+  data() {
+    return {
+      campoInput:null,
+      tarefas: [
+        {titulo: "Ir ao mercado", concluido: false},
+        {titulo: "Ir ao escola", concluido: false},
+      ],
+    };
+  },
+  methods: {
+    handleAddTarefa() {
+     if(this.campoInput){
+       this.tarefas.push({titulo: this.campoInput, concluido: false});
+       this.campoInput = null;
+     }
+    },
+    handleToggleConcluida(concluida) {
+      this.tarefa = { ...this.tarefa, concluida };
+    }
+  }
+};
+</script>
