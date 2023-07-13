@@ -2,8 +2,7 @@
   <div>
     <v-col
           cols="12"
-  
-        >
+          >
           <v-text-field
             v-model="campoInput"
             label="Qual sua tarefa?"
