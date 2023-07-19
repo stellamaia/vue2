@@ -1,14 +1,12 @@
 <template>
   <div>
     <v-list-item
-    :class="{'blue lighten-4' : tarefa.concluido}"
-    @click="tarefa.concluido = !tarefa.concluido">
+     >
       <template v-slot:default="{}">
         <v-list-item-action>
           <v-checkbox>
             <v-checkbox
-              v-model="concluido"
-              @change="handleToggleConcluida"
+            :input-value="tarefa.concluido"
             />
           </v-checkbox>
         </v-list-item-action>
@@ -29,16 +27,10 @@
 export default {
   name: "TarefaComponent",
   props: ["tarefa"],
-
-  computed: {
-    concluido: {
-      get() {
-        return this.tarefa.concluido;
-      },
-      set(value) {
-        this.$emit("update:concluido", value);
-      },
-    },
+  data() {
+    return {
+      concluido: false, // ou o valor inicial desejado
+    };
   },
   methods: {
     handleToggleConcluida() {
