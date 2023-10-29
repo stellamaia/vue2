@@ -12,11 +12,13 @@ export default new Vuex.Store({
     ],
   },
   getters: {
+    //Os getters são funções que só permitem obter dados do estado de maneira computada
   },
   mutations: {
-    //é um metodo que pode fazer algo no state
+    //São funções síncronas que alteram o estado
     adicionaTarefa(state, titulo) {
       if (titulo) {
+        //se titulo for valido, a funcao cria uma nova tarefa 
       state.tarefas.push({
         id: new Date().getTime(),
         titulo,
@@ -25,6 +27,9 @@ export default new Vuex.Store({
       
       }
     },
+    removeTarefa(state, id) {
+     state.tarefas =  state.tarefas.filter(tarefa => tarefa.id !== id)
+    }
   },
   actions: {
   },
